@@ -1,17 +1,19 @@
-const arr = [9, 123, 23, 912, -21, 42, 0, 1, -3];
-
 function insertionSort() {
+    const arr = [123, 9, 23, 912, -21, 42, 0, 1, -3];
     console.info(' --- insertion sort --- \n\nunordered array: \n', arr, '\n\nexecution time:');
     console.time();
+
+    const n = arr.length;
+    const m = n-1;
     
-    for(let i=1; i<arr.length; i++) {
+    for(let i=m; i>=0; i--) {
         let key = arr[i];
-        let j = i-1;
-        while(j>=0 && arr[j] > key) {
-            arr[j+1] = arr[j];
-            j--;
+        let j = i+1;
+        while(j<=n && arr[j] > key) {
+            arr[j-1] = arr[j];
+            j++;
         }
-        arr[j+1] = key;
+        arr[j-1] = key;
     }
      
     console.timeEnd();
